@@ -1,6 +1,6 @@
 # Belly button biodiversity *(Challenge 14)*
 
-This repository contains a mini-project in which I created an interactive dashboard that depicts the data of a study about the human belly button microbe biodiversity.
+This repository contains a mini-project in which I created an [**interactive dashboard**](https://daniel-r-murillo-antuna.github.io/belly-button-challenge/index.html) that depicts the data of a study about the human belly button microbe biodiversity.
 
 ## Author
 
@@ -12,7 +12,7 @@ In 2012, Hulcr et al. published their first scientific research-based article ti
 
 This repository contains an interactive dashboard of the open access data of that interesting research article. The data were downloaded from The Public Science Lab website by the North Carolina State University, and the samples collected for the study were put in a JSON file for easier handling.
 
-An [**interactive dashboard**](https://daniel-r-murillo-antuna.github.io/belly-button-challenge/index.html) of the JSON file was created to let users see the "operational taxonomic units" (OTUs; a small handful of microbial species, which genomes were at least 97% similar) of 152 different anonymous people.
+An interactive dashboard of the JSON file was created to let users see the "operational taxonomic units" (OTUs; a small handful of microbial species, which genomes were at least 97% similar) of 152 different anonymous people.
 
 You will also find the HTML and JS code of the dashboard in this repository.
 
