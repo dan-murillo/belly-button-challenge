@@ -9,150 +9,50 @@ d3.json(myURL).then(({names}) => {
     optionChanged();
 });
 
+// Used the function expression 'optionChanged' to limit where the function is available and keep my global scope light whenever the ID is changed.
 const optionChanged = () => {
-    let choice = d3.select('select').node().value;
+    let selectedID = d3.select('select').node().value;
 
     d3.json(myURL).then(({metadata, samples}) => {
+        let participantData = metadata.filter(obj => obj.id == selectedID)[0];
 
-        let meta = metadata.filter(obj => obj.id == choice)[0];
-        let sample = samples.filter(obj => obj.id == choice)[0];
+        let sample = samples.filter(obj => obj.id == selectedID)[0];
 
         d3.select('.panel-body').html('');
-        Object.entries(meta).forEach(([key, val]) => {
-            d3.select('.panel-body').append('h6').text(`${key.toUpperCase()}: ${val}`)
+        Object.entries(participantData).forEach(([key, val]) => {
+            d3.select('.panel-body').append('h6').text(`${key}: ${val}`)
         });
-        console.log(sample);
 
-        let {otu_ids, sample_values, otu_labels} = sample;
+        let {otu_ids, otu_labels, sample_values} = sample;
 
         var data = [{
             x: sample_values.slice(0,10).reverse(),
             y: otu_ids.slice(0,10).reverse().map(x => `OTU ${x}`),
             text: otu_labels.slice(0,10).reverse(),
-            type: 'bar',
-            orientation: 'h'
+            orientation: 'h',
+            type: 'bar'
         }];
 
         Plotly.newPlot('bar', data);
 
+        var bubbles = [{
+            x: otu_ids,
+            y: sample_values,
+            mode: 'markers',
+            marker: {
+                color: otu_ids,
+                size: sample_values,
+                colorscale: 'Rainbow'
+            },
+            text: otu_labels
+        }];
+
+        var layout = {
+            xaxis: {
+                title: 'OTU ID'
+            }
+        };
         
-        // Plotly.newPlot('bubble', bubbles);
+        Plotly.newPlot('bubble', bubbles, layout);
     })
 }
-
-
-
-
-
-// let xl = []
-
-// let yl = []
-
-// Plotly.d3.json(myURL, function(figure){
-//     let data = figure.samples
-
-//     let groupedData = d3.nest().key((d) => d.id).entries(data)
-
-//     let row = "940"
-
-    
-
-//     // // let selectedID = 940
-
-//     // let selectedData = groupedData[0]
-
-//     console.log(eachID)
-    
-//     // let trace = {
-//     //     x: xl,
-//     //     y: yl
-//     // }
-
-//     // Plotly.newPlot('bar', [trace])
-// })
-
-
-
-
-
-// const data = d3.json(myURL) //.then(
-
-    // let participant = Object.filter()
-    
-    // let xValuesBar = Object.values(samples.otu_ids);
-
-    // let yValuesBar = Object.values(myObj.samples.sample_values);
-
-    // let traceTop10OTUs = {
-    //     x: xValuesBar,
-    //     y: yValuesBar,
-    //     type: 'bar'
-    // }
-    
-    // let layout = {
-    //     title: ''
-    // }
-    
-    // Plotly.newPlot('bar', traceTop10OTUs, layout)
-
-
-
-
-
-// function init() {
-
-//     data = [{
-//         x: ['uno', 'dos', 'tres', 'cuatro', 'cinco'],
-//         y: [1, 2, 4, 8, 16]
-//     }];
-    
-//     Plotly.newPlot('bar', data)
-// }
-
-// init();
-
-
-
-
-
-// const myObj = JSON.parse(myURL)
-
-
-
-
-
-// function selectedSample(a) {
-//     let 
-// }
-
-
-
-
-
-//     let dropdownMenu = d3.select("#selDataset");
-
-//     let dataset1 = dropdownMenu.property("value")
-
-//     if (dataset === 'dataset1') {
-//         x = ['uno', 'dos', 'tres', 'cuatro', 'cinco'];
-//         y = [1, 2, 4, 8, 16];
-//     }
-    
-//     else if (dataset === 'dataset2') {
-//         x = ['diez', 'veinte', 'treinta', 'cuarenta', 'cincuenta'];
-//         y = [1, 10, 100, 1000, 10000];
-//     }
-
-
-
-
-// GETS ONLY THE IDS:
-// let eachID = d3.values(groupedData).map(function(f) {
-//     return f.values.map(function(g) {
-//         return g.id;
-//     }).join(', ');
-// });
-
-
-
-
