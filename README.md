@@ -1,10 +1,10 @@
 # Belly button biodiversity *(Challenge 14)*
 
-This repository contains a mini-project in which I created an [**interactive dashboard**](https://daniel-r-murillo-antuna.github.io/belly-button-challenge/index.html) that depicts the data of a study about the human belly button microbe biodiversity.
+This repository contains a mini-project in which I created an [**interactive dashboard**](https://dan-murillo.github.io/belly-button-challenge/index.html) that depicts the data of a study about the human belly button microbe biodiversity.
 
 ## Author
 
-Daniel Ramón Murillo Antuna [@daniel-r-murillo-antuna](https://www.github.com/daniel-r-murillo-antuna)
+Daniel Ramón Murillo Antuna [@dan-murillo](https://www.github.com/dan-murillo)
 
 ## Repository description
 
